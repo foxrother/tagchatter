@@ -1,3 +1,27 @@
-<p>
-  chatroom works!
-</p>
+<header [parrotCount]="parrotCount" app-header></header>
+
+<div class="unsent-list" *ngIf="unsentMessages">
+    <div class="unsent" *ngFor="let unsentMsg of unsentMessages; let i = index">
+        <p class="unsent__content">Mensagem não enviada: {{unsentMsg.message}}</p>
+        <div (click)="sendUnsent(i)" class="unsent__send">Reenviar</div>
+        <div (click)="deleteUnsent(i)" class="unsent__cancel">Cancelar</div>
+    </div>
+</div>
+
+<div class="message-list" #messageList>
+
+    <app-message (toggledParrot)="onToggledParrot($event)" *ngFor="let message of messages" [message]="message"
+        [style.background-color]="message.has_parrot ? '#FFFAE7' : 'white'">
+    </app-message>
+
+</div>
+
+<!-- MessageInput -->
+
+<div class="input__container">
+    <div *ngIf="currentUser" class=" input__avatar" [style.background-image]="'url(' + currentUser.avatar + ')'"></div>
+    <form (ngSubmit)="sendMessage()" [formGroup]="messageForm">
+        <input type="text" formControlName="message" placeholder="Type a message" required>
+    </form>
+    <span (click)="sendMessage()" class="input__send"></span>
+</div>

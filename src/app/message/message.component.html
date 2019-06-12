@@ -1,0 +1,14 @@
+<div class="message__avatar" [style.background-image]="'url(' + message.author.avatar + ')'">
+</div>
+
+<div class="message__content">
+  <div class="message__header">
+    <div class="message__author">{{ message.author.name }}</div>
+    <div class="message__timestamp">• {{ message.created_at | date:'HH:mm' }} •</div>
+    <div (click)="toggleParrot()" class="message__parrot"
+      [style.background-image]="this.message.has_parrot ? 'url(\'../../assets/images/parrot-active.svg\')' : 'url(\'../../assets/images/parrot-inactive.svg\')'">
+    </div>
+
+  </div>
+  <div class="message__body"> {{message.content}} </div>
+</div>

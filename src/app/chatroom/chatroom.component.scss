@@ -1,0 +1,98 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100vh;
+}
+
+.unsent-list{
+    position: absolute;
+    left: 40%;
+    margin-top: 7px;
+}
+
+.unsent {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.377);
+    min-width: 300px;
+    background-color: white;
+    padding: 3px 20px;
+    border-radius: 99px;
+    margin-top: 7px;
+}
+
+.unsent__content {
+    font-size: 13px;
+    display: inline-block;
+    margin: auto;
+}
+
+.unsent__send, .unsent__cancel {
+    color: white;
+    display: inline-block;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.unsent__send:hover, .unsent__cancel:hover {
+    cursor: pointer;
+}
+
+.unsent__send {
+    background-color: #4ab063;
+    margin: 0 6px;
+}
+
+.unsent__cancel {
+    background-color: #c25252;
+}
+
+.message-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: scroll;
+    padding-top: 30px;
+}
+
+.input__container {
+    align-items: center;
+    background: #EFEFEF;
+    display: flex;
+    min-height: 100px;
+    padding: 24px;
+}
+
+.input__avatar {
+    background-size: contain;
+    border-radius: 6px;
+    height: 52px;
+    margin: 0 24px;
+    min-width: 52px;
+}
+
+.input__send {
+    min-width: 32px;
+    height: 30px;
+    margin: 0 24px;
+    background-image: url('../../assets/images/send.svg');
+}
+
+.input__send:hover {
+    cursor: pointer;
+}
+
+form {
+    flex-grow: 1;
+}
+
+input[type=text] {
+    background: white;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    height: 52px;
+    padding: 15px;
+    resize: none;
+    width: 100%;
+}
