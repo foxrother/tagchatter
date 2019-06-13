@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,7 +14,7 @@ const apiRoot = 'https://tagchatter.herokuapp.com';
   templateUrl: './chatroom.component.html',
   styleUrls: ['./chatroom.component.scss']
 })
-export class ChatroomComponent implements OnInit, OnChanges {
+export class ChatroomComponent implements OnInit {
 
   // Elemento que lista as mensagens
   @ViewChild('messageList', { static: true }) messageListCmp: ElementRef;
@@ -39,7 +39,7 @@ export class ChatroomComponent implements OnInit, OnChanges {
   // Array contendo as mensagens
   messages: Message[];
 
-  unsentMessages: Object[] = [];
+  unsentMessages: {message: string, author_id: string}[] = [];
 
   // Objeto contendo os dados do usuário
   currentUser: User;
@@ -56,7 +56,7 @@ export class ChatroomComponent implements OnInit, OnChanges {
   // Método que marca/desmarca mensagens
   onToggledParrot(message: { messageId: String, has_parrot: boolean }) {
     const msgIdx = this.messages.findIndex(msg => msg.id === message.messageId);
-    const modifiedMessages = this.messages;
+    const modifiedMessages = [...this.messages];
     modifiedMessages[msgIdx].has_parrot = !message.has_parrot
 
     if (!message.has_parrot) {
@@ -74,7 +74,7 @@ export class ChatroomComponent implements OnInit, OnChanges {
     // Manda a mensagem para a API quando o usuário envia a mensagem
     // Caso o request falhe exibe uma mensagem para o usuário utilizando Window.alert ou outro componente visual
     // Se o request for bem sucedido, atualiza o conteúdo da lista de mensagens
-    const msg: Object = { message: this.messageForm.value.message, author_id: this.currentUser.id };
+    const msg = { message: this.messageForm.value.message, author_id: this.currentUser.id };
     this.http.post(`${apiRoot}/messages`, msg).subscribe(
       () => { },
       () => {
@@ -117,9 +117,5 @@ export class ChatroomComponent implements OnInit, OnChanges {
     this.messages$.subscribe((res: Message[]) => this.messages = res);
     this.parrotCount$.subscribe((res: number) => this.parrotCount = res);
     this.currentUser$.subscribe((res: User) => this.currentUser = res);
-  }
-  ngOnChanges() {
-    const msgList = this.messageListCmp.nativeElement;
-    msgList.scrollTop = msgList.scrollHeight;
   }
 }
