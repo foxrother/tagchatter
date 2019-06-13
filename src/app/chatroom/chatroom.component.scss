@@ -7,13 +7,13 @@
 
 .unsent-list{
     position: absolute;
-    left: 40%;
-    margin-top: 7px;
+    left: 50%;
+    margin-left: -200px;
 }
 
 .unsent {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.377);
-    min-width: 300px;
+    width: 400px;
     background-color: white;
     padding: 3px 20px;
     border-radius: 99px;
@@ -27,10 +27,7 @@
 }
 
 .unsent__send, .unsent__cancel {
-    color: white;
     display: inline-block;
-    padding: 2px 4px;
-    border-radius: 4px;
     font-size: 11px;
 }
 
@@ -39,12 +36,12 @@
 }
 
 .unsent__send {
-    background-color: #4ab063;
+    color: #4ab063;
     margin: 0 6px;
 }
 
 .unsent__cancel {
-    background-color: #c25252;
+    color: #c25252;
 }
 
 .message-list {
