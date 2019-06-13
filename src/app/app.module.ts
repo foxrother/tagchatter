@@ -9,7 +9,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { MessageComponent } from './message/message.component';
-import { MessageListComponent } from './message-list/message-list.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { MessageListComponent } from './message-list/message-list.component';
     SidebarComponent,
     HeaderComponent,
     ChatroomComponent,
-    MessageComponent,
-    MessageListComponent
+    MessageComponent
   ],
   imports: [
     BrowserModule,
