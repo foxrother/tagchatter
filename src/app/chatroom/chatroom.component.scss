@@ -5,7 +5,7 @@
     height: 100vh;
 }
 
-.unsent-list{
+.unsent-list {
     position: absolute;
     left: 50%;
     margin-left: -200px;
@@ -26,12 +26,14 @@
     margin: auto;
 }
 
-.unsent__send, .unsent__cancel {
+.unsent__send,
+.unsent__cancel {
     display: inline-block;
     font-size: 11px;
 }
 
-.unsent__send:hover, .unsent__cancel:hover {
+.unsent__send:hover,
+.unsent__cancel:hover {
     cursor: pointer;
 }
 
@@ -92,4 +94,28 @@ input[type=text] {
     padding: 15px;
     resize: none;
     width: 100%;
+}
+
+.scrolldown {
+    background-color: #3e58c8;
+    border-radius: 100%;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    z-index: 9;
+    top: 100%;
+    left: 100%;
+    margin-top: -160px;
+    margin-left: -75px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    box-shadow: 0 0 4px #3e58c8;
+}
+
+.scrolldown:hover {
+    box-shadow: 0 0 8px #3e58c8;
+    cursor: pointer;
 }

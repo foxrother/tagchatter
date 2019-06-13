@@ -10,6 +10,10 @@
     </div>
 </div>
 
+<div class="scrolldown" (click)="scrollDown()">
+    ⌄
+</div>
+
 <div class="message-list" #messageList>
 
     <app-message (toggledParrot)="onToggledParrot($event)" *ngFor="let message of messages" [message]="message"

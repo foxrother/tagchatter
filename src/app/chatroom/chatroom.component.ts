@@ -125,12 +125,17 @@ export class ChatroomComponent implements OnInit {
 
     // Atualização otimista
     this.messages = [...this.messages, unsentMessage];
-    
+
     setTimeout(() => {
       const msgList = this.messageListCmp.nativeElement;
       msgList.scrollTop = msgList.scrollHeight;
     }, 150);
 
+  }
+
+  scrollDown() {
+    const msgList = this.messageListCmp.nativeElement;
+    msgList.scrollTop = msgList.scrollHeight;
   }
 
   ngOnInit() {
