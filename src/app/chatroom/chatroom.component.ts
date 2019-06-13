@@ -87,24 +87,9 @@ export class ChatroomComponent implements OnInit {
         id: fakeId
       };
 
-      // Atualização otimista
-      this.messages = [...this.messages, newMessage];
-
-      this.http.post(`${apiRoot}/messages`, { message: newMessage.content, author_id: newMessage.author.id })
-        .subscribe(
-          () => { },
-          () => {
-            this.messages = [...this.messages].filter(message => message.id !== newMessage.id);
-            this.unsentMessages.push(newMessage);
-          }
-        );
-
+      this.optimisticSend(newMessage);
       this.messageForm.setValue({ message: '' });
-
-      setTimeout(() => {
-        const msgList = this.messageListCmp.nativeElement;
-        msgList.scrollTop = msgList.scrollHeight;
-      }, 150);
+      setTimeout(() => this.scrollDown(), 150);
     }
   }
 
@@ -114,23 +99,24 @@ export class ChatroomComponent implements OnInit {
 
   sendUnsent(index: number) {
     const unsentMessage = this.unsentMessages[index];
+
     this.unsentMessages.splice(index, 1);
-    this.http.post(`${apiRoot}/messages`, { message: unsentMessage.content, author_id: unsentMessage.author.id }).subscribe(
+
+    this.optimisticSend(unsentMessage);
+    setTimeout(() => this.scrollDown(), 150);
+  }
+
+  optimisticSend(newMessage: Message) {
+    // Atualização otimista
+    this.messages = [...this.messages, newMessage];
+
+    this.http.post(`${apiRoot}/messages`, { message: newMessage.content, author_id: newMessage.author.id }).subscribe(
       () => { },
       () => {
-        this.messages = [...this.messages].filter(message => message.id !== unsentMessage.id);
-        this.unsentMessages.push(unsentMessage);
+        this.messages = [...this.messages].filter(message => message.id !== newMessage.id);
+        this.unsentMessages.push(newMessage);
       }
     );
-
-    // Atualização otimista
-    this.messages = [...this.messages, unsentMessage];
-
-    setTimeout(() => {
-      const msgList = this.messageListCmp.nativeElement;
-      msgList.scrollTop = msgList.scrollHeight;
-    }, 150);
-
   }
 
   scrollDown() {
