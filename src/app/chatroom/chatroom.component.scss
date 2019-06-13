@@ -14,13 +14,14 @@
 .unsent {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.377);
     width: 400px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.753);
     padding: 3px 20px;
     border-radius: 99px;
     margin-top: 7px;
 }
 
 .unsent__content {
+    color: white;
     font-size: 13px;
     display: inline-block;
     margin: auto;
@@ -38,12 +39,12 @@
 }
 
 .unsent__send {
-    color: #4ab063;
+    color: #7aec96;;
     margin: 0 6px;
 }
 
 .unsent__cancel {
-    color: #c25252;
+    color: #ff7070;;
 }
 
 .message-list {
