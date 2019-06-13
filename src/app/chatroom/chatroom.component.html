@@ -2,10 +2,10 @@
 
 <div class="unsent-list" *ngIf="unsentMessages">
     <div class="unsent" *ngFor="let unsentMsg of unsentMessages; let i = index">
-        <p class="unsent__content">Mensagem não enviada: "{{unsentMsg.content.slice(0, 7)}}..."</p>
+        <p class="unsent__content">Message not sent: "{{unsentMsg.content.slice(0, 7)}}..."</p>
         <div style="float: right;">
-            <div (click)="sendUnsent(i)" class="unsent__send">Reenviar</div>
-            <div (click)="deleteUnsent(i)" class="unsent__cancel">Cancelar</div>
+            <div (click)="sendUnsent(i)" class="unsent__send">Retry</div>
+            <div (click)="deleteUnsent(i)" class="unsent__cancel">Cancel</div>
         </div>
     </div>
 </div>
